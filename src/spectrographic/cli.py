@@ -5,19 +5,16 @@ console script. To run this script uncomment the following lines in the
 [options.entry_points] section in setup.cfg:
 
     console_scripts =
-         fibonacci = spectrographic.skeleton:run
+         spectrographic = spectrographic.cli:run
 
-Then run `python setup.py install` which will install the command `fibonacci`
+Then run `python setup.py install` which will install the command `spectrographic`
 inside your current environment.
-Besides console scripts, the header (i.e. until _logger...) of this file can
-also be used as template for Python modules.
-
 Note: This skeleton file can be safely removed if not needed!
 """
 
 import argparse
-import sys
 import logging
+import sys
 
 from spectrographic import __version__
 
@@ -26,22 +23,6 @@ __copyright__ = "Levi Borodenko"
 __license__ = "mit"
 
 _logger = logging.getLogger(__name__)
-
-
-def fib(n):
-    """Fibonacci example function
-
-    Args:
-      n (int): integer
-
-    Returns:
-      int: n-th Fibonacci number
-    """
-    assert n > 0
-    a, b = 1, 1
-    for i in range(n-1):
-        a, b = b, a+b
-    return a
 
 
 def parse_args(args):
@@ -53,31 +34,29 @@ def parse_args(args):
     Returns:
       :obj:`argparse.Namespace`: command line parameters namespace
     """
-    parser = argparse.ArgumentParser(
-        description="Just a Fibonacci demonstration")
+    parser = argparse.ArgumentParser(description="Turn any image into sound.")
     parser.add_argument(
         "--version",
         action="version",
-        version="spectrographic {ver}".format(ver=__version__))
-    parser.add_argument(
-        dest="n",
-        help="n-th Fibonacci number",
-        type=int,
-        metavar="INT")
+        version="spectrographic {ver}".format(ver=__version__),
+    )
+    parser.add_argument(dest="n", help="n-th Fibonacci number", type=int, metavar="INT")
     parser.add_argument(
         "-v",
         "--verbose",
         dest="loglevel",
         help="set loglevel to INFO",
         action="store_const",
-        const=logging.INFO)
+        const=logging.INFO,
+    )
     parser.add_argument(
         "-vv",
         "--very-verbose",
         dest="loglevel",
         help="set loglevel to DEBUG",
         action="store_const",
-        const=logging.DEBUG)
+        const=logging.DEBUG,
+    )
     return parser.parse_args(args)
 
 
@@ -88,8 +67,9 @@ def setup_logging(loglevel):
       loglevel (int): minimum loglevel for emitting messages
     """
     logformat = "[%(asctime)s] %(levelname)s:%(name)s:%(message)s"
-    logging.basicConfig(level=loglevel, stream=sys.stdout,
-                        format=logformat, datefmt="%Y-%m-%d %H:%M:%S")
+    logging.basicConfig(
+        level=loglevel, stream=sys.stdout, format=logformat, datefmt="%Y-%m-%d %H:%M:%S"
+    )
 
 
 def main(args):

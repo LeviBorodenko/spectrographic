@@ -1,17 +1,24 @@
-# =============================================================================
-# DEPRECATION WARNING:
-#
-# The file `requirements.txt` does not influence the package dependencies and
-# will not be automatically created in the next version of PyScaffold (v4.x).
-#
-# Please have look at the docs for better alternatives
-# (`Dependency Management` section).
-# =============================================================================
-#
-# Add your pinned requirements so that they can be easily installed with:
-# pip install -r requirements.txt
-# Remember to also add them in setup.cfg but unpinned.
-# Example:
-# numpy==1.13.3
-# scipy==1.0
-#
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: linux-64
+_libgcc_mutex=0.1=main
+ca-certificates=2019.11.27=0
+certifi=2019.11.28=py38_0
+libedit=3.1.20181209=hc058e9b_0
+libffi=3.2.1=hd88cf55_4
+libgcc-ng=9.1.0=hdf63c60_0
+libstdcxx-ng=9.1.0=hdf63c60_0
+ncurses=6.1=he6710b0_1
+numpy=1.17.4=pypi_0
+openssl=1.1.1d=h7b6447c_3
+pillow=6.2.1=pypi_0
+pip=19.3.1=py38_0
+python=3.8.0=h0371630_2
+readline=7.0=h7b6447c_5
+setuptools=42.0.2=py38_0
+simpleaudio=1.0.4=pypi_0
+tk=8.6.8=hbc83047_0
+wavio=0.0.4=pypi_0
+wheel=0.33.6=py38_0
+xz=5.2.4=h14c3975_4
+zlib=1.2.11=h7b6447c_3

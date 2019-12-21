@@ -2,9 +2,11 @@
 Changelog
 =========
 
-Version 0.1
+Version 0.8.0
 ===========
 
-- Feature A added
-- FIX: nasty bug #1729 fixed
-- add your changes here!
+- The core implementation is done
+	- base.py contains a working implementation
+	of the spetrographic idea.
+- Created some examples.
+- Adding requirements
