@@ -238,12 +238,16 @@ class ColumnToSound(object):
 
         # get timesteps
         t = np.linspace(
-            start=0, stop=duration, num=duration * self.SAMPLE_RATE, endpoint=False
+            start=0,
+            stop=duration,
+            num=duration * self.SAMPLE_RATE,
+            endpoint=False
         )
 
         # generate corresponding sine wave.
         # this is the only place that CONTRAST acts in
-        sound_wave = (intensity ** self.CONTRAST) * np.cos(freq * t * 2 * np.pi)
+        sound_wave = (intensity ** self.CONTRAST) * \
+            np.cos(freq * t * 2 * np.pi)
 
         return sound_wave
 

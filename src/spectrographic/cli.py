@@ -9,20 +9,20 @@ console script. To run this script uncomment the following lines in the
 
 Then run `python setup.py install` which will install the command `spectrographic`
 inside your current environment.
-Note: This skeleton file can be safely removed if not needed!
 """
 
 import argparse
 import logging
 import sys
+from pathlib import Path
+
+from spectrographic.base import SpectroGraphic
 
 from spectrographic import __version__
 
 __author__ = "Levi Borodenko"
 __copyright__ = "Levi Borodenko"
 __license__ = "mit"
-
-_logger = logging.getLogger(__name__)
 
 
 def parse_args(args):
@@ -40,36 +40,76 @@ def parse_args(args):
         action="version",
         version="spectrographic {ver}".format(ver=__version__),
     )
-    parser.add_argument(dest="n", help="n-th Fibonacci number", type=int, metavar="INT")
     parser.add_argument(
-        "-v",
-        "--verbose",
-        dest="loglevel",
-        help="set loglevel to INFO",
-        action="store_const",
-        const=logging.INFO,
+        "-i",
+        "--image",
+        dest="path_to_image",
+        help="Path to image",
+        type=Path,
+        action="store",
+        required=True)
+    parser.add_argument(
+        "-d",
+        "--duration",
+        dest="duration",
+        help="Duration of generated sound",
+        action="store",
+        default=20,
+        type=int
     )
     parser.add_argument(
-        "-vv",
-        "--very-verbose",
-        dest="loglevel",
-        help="set loglevel to DEBUG",
-        action="store_const",
-        const=logging.DEBUG,
+        "-m",
+        "--min_freq",
+        dest="min_freq",
+        help="Minimal frequency used in SpectroGraphic",
+        action="store",
+        default=500,
+        type=int
+    )
+    parser.add_argument(
+        "-M",
+        "--max_freq",
+        dest="max_freq",
+        help="Maximal frequency used in SpectroGraphic",
+        action="store",
+        default=7500,
+        type=int
+    )
+    parser.add_argument(
+        "-r",
+        "--resolution",
+        dest="resolution",
+        help="y-resolution of SpectroGraphic",
+        action="store",
+        default=150,
+        type=int
+    )
+    parser.add_argument(
+        "-c",
+        "--contrast",
+        dest="contrast",
+        help="Contrast of SpectroGraphic",
+        action="store",
+        default=3,
+        type=int
+    )
+    parser.add_argument(
+        "-p",
+        "--play",
+        action="store_true",
+        dest="play",
+        help="Play the Spectrographic sound"
+    )
+    parser.add_argument(
+        "-s",
+        "--save",
+        dest="save_file",
+        help="Path to .wav file in which to save the SpectroGraphic.",
+        action="store",
+        default=Path("SoundGraphic.wav"),
+        type=Path
     )
     return parser.parse_args(args)
-
-
-def setup_logging(loglevel):
-    """Setup basic logging
-
-    Args:
-      loglevel (int): minimum loglevel for emitting messages
-    """
-    logformat = "[%(asctime)s] %(levelname)s:%(name)s:%(message)s"
-    logging.basicConfig(
-        level=loglevel, stream=sys.stdout, format=logformat, datefmt="%Y-%m-%d %H:%M:%S"
-    )
 
 
 def main(args):
@@ -79,10 +119,20 @@ def main(args):
       args ([str]): command line parameter list
     """
     args = parse_args(args)
-    setup_logging(args.loglevel)
-    _logger.debug("Starting crazy calculations...")
-    print("The {}-th Fibonacci number is {}".format(args.n, fib(args.n)))
-    _logger.info("Script ends here")
+
+    sg = SpectroGraphic(
+        path=args.path_to_image,
+        height=args.resolution,
+        duration=args.duration,
+        min_freq=args.min_freq,
+        max_freq=args.max_freq,
+        contrast=args.contrast
+    )
+
+    if args.play:
+        sg.play()
+
+    sg.save(wav_file=args.save_file)
 
 
 def run():
