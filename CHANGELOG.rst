@@ -22,3 +22,8 @@ Version 0.8.5
 ===========
 
 - quick fix of centering in README.md
+
+Version 0.8.6
+===========
+
+- added gitpython as dependency
