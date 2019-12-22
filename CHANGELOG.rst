@@ -27,3 +27,8 @@ Version 0.8.6
 ===========
 
 - added gitpython as dependency
+
+Version 0.8.7
+===========
+
+- removed dependencies from config file and moved to requirements
