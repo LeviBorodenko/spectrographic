@@ -18,7 +18,7 @@ Version 0.8.1
 - test upload to testpypi
 - create demonstrational video
 
-Version 0.8.3
+Version 0.8.5
 ===========
 
 - quick fix of centering in README.md

@@ -1,11 +1,11 @@
 
 
-# <p style="text-align: center;"> SpectroGraphic </p>
-_<p style="text-align: center;">Turn any image into a sound whose spectrogram looks like the image!</p>_
+# SpectroGraphic
+_Turn any image into a sound whose spectrogram looks like the image!_
 
 
 
-![result](banner.png){center}
+![result](banner.png)
 
 
 
