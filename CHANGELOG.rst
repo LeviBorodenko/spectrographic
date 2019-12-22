@@ -16,4 +16,4 @@ Version 0.9.0
 
 - Wrote README.md
 - test upload to testpypi
-- create demonstrational gif
+- create demonstrational video

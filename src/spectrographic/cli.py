@@ -32,7 +32,9 @@ def parse_args(args):
     Returns:
       :obj:`argparse.Namespace`: command line parameters namespace
     """
-    parser = argparse.ArgumentParser(description="Turn any image into sound.")
+    parser = argparse.ArgumentParser(
+        description="Turn any image into sound.", epilog="By Levi B."
+    )
     parser.add_argument(
         "--version",
         action="version",
@@ -42,7 +44,7 @@ def parse_args(args):
         "-i",
         "--image",
         dest="path_to_image",
-        help="Path to image",
+        help="Path of image that we want to embed in a spectrogram.",
         type=Path,
         action="store",
         required=True,
@@ -51,7 +53,7 @@ def parse_args(args):
         "-d",
         "--duration",
         dest="duration",
-        help="Duration of generated sound",
+        help="Duration of generated sound.",
         action="store",
         default=20,
         type=int,
@@ -60,7 +62,7 @@ def parse_args(args):
         "-m",
         "--min_freq",
         dest="min_freq",
-        help="Minimal frequency used in SpectroGraphic",
+        help="Smallest frequency used for drawing the image.",
         action="store",
         default=500,
         type=int,
@@ -69,7 +71,7 @@ def parse_args(args):
         "-M",
         "--max_freq",
         dest="max_freq",
-        help="Maximal frequency used in SpectroGraphic",
+        help="Largest frequency used for drawing the image.",
         action="store",
         default=7500,
         type=int,
@@ -78,7 +80,7 @@ def parse_args(args):
         "-r",
         "--resolution",
         dest="resolution",
-        help="y-resolution of SpectroGraphic",
+        help="Vertical resolution of the image in the spectrogram.",
         action="store",
         default=150,
         type=int,
@@ -87,7 +89,7 @@ def parse_args(args):
         "-c",
         "--contrast",
         dest="contrast",
-        help="Contrast of SpectroGraphic",
+        help="Contrast of the image in the spectrogram.",
         action="store",
         default=3,
         type=int,
@@ -97,16 +99,16 @@ def parse_args(args):
         "--play",
         action="store_true",
         dest="play",
-        help="Play the Spectrographic sound",
+        help="Directly play the resulting sound.",
     )
     parser.add_argument(
         "-s",
         "--save",
         dest="save_file",
-        help="Path to .wav file in which to save the SpectroGraphic.",
+        help="Path to .wav file in which to save the resulting sound.",
         action="store",
-        default=Path("SoundGraphic.wav"),
-        type=Path,
+        default="SoundGraphic.wav",
+        type=str,
     )
     return parser.parse_args(args)
 
