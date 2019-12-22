@@ -1,3 +1,16 @@
+"""[summary]
+Stand-alone version of SpectroGraphic, simply
+copy this file and use it as the command-line tool.
+
+No pip required.
+
+In the folder with this file, run
+
+python spectrographic.py -h
+
+"""
+import argparse
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -325,3 +338,120 @@ class ColumnToSound(object):
             wave += self.pixel_to_sound(idx, intensity)
 
         return wave
+
+
+def parse_args(args):
+    """Parse command line parameters
+
+    Args:
+      args ([str]): command line parameters as list of strings
+
+    Returns:
+      :obj:`argparse.Namespace`: command line parameters namespace
+    """
+    parser = argparse.ArgumentParser(description="Turn any image into sound.")
+
+    parser.add_argument(
+        "-i",
+        "--image",
+        dest="path_to_image",
+        help="Path to image",
+        type=Path,
+        action="store",
+        required=True,
+    )
+    parser.add_argument(
+        "-d",
+        "--duration",
+        dest="duration",
+        help="Duration of generated sound",
+        action="store",
+        default=20,
+        type=int,
+    )
+    parser.add_argument(
+        "-m",
+        "--min_freq",
+        dest="min_freq",
+        help="Minimal frequency used in SpectroGraphic",
+        action="store",
+        default=500,
+        type=int,
+    )
+    parser.add_argument(
+        "-M",
+        "--max_freq",
+        dest="max_freq",
+        help="Maximal frequency used in SpectroGraphic",
+        action="store",
+        default=7500,
+        type=int,
+    )
+    parser.add_argument(
+        "-r",
+        "--resolution",
+        dest="resolution",
+        help="y-resolution of SpectroGraphic",
+        action="store",
+        default=150,
+        type=int,
+    )
+    parser.add_argument(
+        "-c",
+        "--contrast",
+        dest="contrast",
+        help="Contrast of SpectroGraphic",
+        action="store",
+        default=3,
+        type=int,
+    )
+    parser.add_argument(
+        "-p",
+        "--play",
+        action="store_true",
+        dest="play",
+        help="Play the Spectrographic sound",
+    )
+    parser.add_argument(
+        "-s",
+        "--save",
+        dest="save_file",
+        help="Path to .wav file in which to save the SpectroGraphic.",
+        action="store",
+        default=Path("SoundGraphic.wav"),
+        type=Path,
+    )
+    return parser.parse_args(args)
+
+
+def main(args):
+    """Main entry point allowing external calls
+
+    Args:
+      args ([str]): command line parameter list
+    """
+    args = parse_args(args)
+
+    sg = SpectroGraphic(
+        path=args.path_to_image,
+        height=args.resolution,
+        duration=args.duration,
+        min_freq=args.min_freq,
+        max_freq=args.max_freq,
+        contrast=args.contrast,
+    )
+
+    if args.play:
+        sg.play()
+
+    sg.save(wav_file=args.save_file)
+
+
+def run():
+    """Entry point for console_scripts
+    """
+    main(sys.argv[1:])
+
+
+if __name__ == "__main__":
+    run()

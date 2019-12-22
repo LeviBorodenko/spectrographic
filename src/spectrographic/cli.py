@@ -12,13 +12,11 @@ inside your current environment.
 """
 
 import argparse
-import logging
 import sys
 from pathlib import Path
 
-from spectrographic.base import SpectroGraphic
-
 from spectrographic import __version__
+from spectrographic.base import SpectroGraphic
 
 __author__ = "Levi Borodenko"
 __copyright__ = "Levi Borodenko"
@@ -47,7 +45,8 @@ def parse_args(args):
         help="Path to image",
         type=Path,
         action="store",
-        required=True)
+        required=True,
+    )
     parser.add_argument(
         "-d",
         "--duration",
@@ -55,7 +54,7 @@ def parse_args(args):
         help="Duration of generated sound",
         action="store",
         default=20,
-        type=int
+        type=int,
     )
     parser.add_argument(
         "-m",
@@ -64,7 +63,7 @@ def parse_args(args):
         help="Minimal frequency used in SpectroGraphic",
         action="store",
         default=500,
-        type=int
+        type=int,
     )
     parser.add_argument(
         "-M",
@@ -73,7 +72,7 @@ def parse_args(args):
         help="Maximal frequency used in SpectroGraphic",
         action="store",
         default=7500,
-        type=int
+        type=int,
     )
     parser.add_argument(
         "-r",
@@ -82,7 +81,7 @@ def parse_args(args):
         help="y-resolution of SpectroGraphic",
         action="store",
         default=150,
-        type=int
+        type=int,
     )
     parser.add_argument(
         "-c",
@@ -91,14 +90,14 @@ def parse_args(args):
         help="Contrast of SpectroGraphic",
         action="store",
         default=3,
-        type=int
+        type=int,
     )
     parser.add_argument(
         "-p",
         "--play",
         action="store_true",
         dest="play",
-        help="Play the Spectrographic sound"
+        help="Play the Spectrographic sound",
     )
     parser.add_argument(
         "-s",
@@ -107,7 +106,7 @@ def parse_args(args):
         help="Path to .wav file in which to save the SpectroGraphic.",
         action="store",
         default=Path("SoundGraphic.wav"),
-        type=Path
+        type=Path,
     )
     return parser.parse_args(args)
 
@@ -126,7 +125,7 @@ def main(args):
         duration=args.duration,
         min_freq=args.min_freq,
         max_freq=args.max_freq,
-        contrast=args.contrast
+        contrast=args.contrast,
     )
 
     if args.play:
