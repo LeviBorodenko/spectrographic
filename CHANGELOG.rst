@@ -32,3 +32,8 @@ Version 0.8.7
 ===========
 
 - removed dependencies from config file and moved to requirements
+
+Version 0.9.0
+===========
+- Release
+- upload to the official pypi and making github repo public.

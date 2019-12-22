@@ -1,13 +1,7 @@
-
-
 # SpectroGraphic
 _Turn any image into a sound whose spectrogram looks like the image!_
 
-
-
 ![result](banner.png)
-
-
 
 <hr>
 
@@ -22,31 +16,36 @@ The game DOOM used a similar technique to [hide satanic figures inside its sound
 #### Set-up
 
 Get the command-line tool `spectrographic` via `pip` by running `pip install spectrographic`. You can also simply use `spectrographic.py` from `stand-alone\` as a command-line tool directly.
-Furthermore, make sure you meet all the dependencies inside the `requirements.txt`. `Numpy simpleaudio wavio` are crucial.
+Furthermore, make sure you meet all the dependencies inside the `requirements.txt`. Install them with `pip install requirements.txt`.
 
 After installation with `pip` one simply needs to run `spectrographic [...]` in the console and with the stand-alone script you have to use `python spectrographic.py [...]` inside the folder containing `spectrographic.py`.
 
-You could also simply import the `SpectroGraphic` class from `spectrographic`
+You could also simply import the `SpectroGraphic` class from `spectrographic`. Check the doc-strings for detailed explanations and more features.
 
 #### Command-line tool usage
 ```
-usage: primify.py [-h] [--image IMAGE_PATH] [--max_digits MAX_DIGITS]
-                  [--method {0,1,2}] [--output_dir OUTPUT_DIR]
-                  [--output_file OUTPUT_FILE] [-v]
+usage: spectrographic [-h] [--version] -i PATH_TO_IMAGE [-d DURATION] [-m MIN_FREQ] [-M MAX_FREQ] [-r RESOLUTION] [-c CONTRAST] [-p] [-s SAVE_FILE]
 
-Command-line tool for converting images to primes
+Turn any image into sound.
 
 optional arguments:
   -h, --help            show this help message and exit
-  --image IMAGE_PATH    Source image to be converted.
-  --max_digits MAX_DIGITS
-                        Maximal number of digits the prime can have.
-  --method {0,1,2}      Method for converting image. Tweak 'till happy
-  --output_dir OUTPUT_DIR
-                        Directory of the output text file
-  --output_file OUTPUT_FILE
-                        File name of the text file containing the prime.
-  -v                    Verbose output (Recommended!)
+  --version             show program's version number and exit
+  -i PATH_TO_IMAGE, --image PATH_TO_IMAGE
+                        Path of image that we want to embed in a spectrogram.
+  -d DURATION, --duration DURATION
+                        Duration of generated sound.
+  -m MIN_FREQ, --min_freq MIN_FREQ
+                        Smallest frequency used for drawing the image.
+  -M MAX_FREQ, --max_freq MAX_FREQ
+                        Largest frequency used for drawing the image.
+  -r RESOLUTION, --resolution RESOLUTION
+                        Vertical resolution of the image in the spectrogram.
+  -c CONTRAST, --contrast CONTRAST
+                        Contrast of the image in the spectrogram.
+  -p, --play            Directly play the resulting sound.
+  -s SAVE_FILE, --save SAVE_FILE
+                        Path to .wav file in which to save the resulting sound.
 ```
 Thus, if you have the source image at `./source.png` and you want to generate a 10s long sound in the frequency range of 10kHz to 20kHz. You also want to save the resulting .wav-file as `sound.wav` and also play the resulting sound. Then you need to run:
 

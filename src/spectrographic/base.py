@@ -220,7 +220,7 @@ class ColumnToSound(object):
         # duration in seconds
         self.DURATION = duration
 
-    def _get_wave(self, freq: int, intensity: float = 1, duration: float = 1):
+    def _get_wave(self, freq: int, intensity: float = 1, duration: int = 1):
         """Core method that takes a frequency, intensity and duration
         and returns an array representing the corresponding sound.
 
@@ -238,7 +238,7 @@ class ColumnToSound(object):
 
         # get timesteps
         t = np.linspace(
-            start=0, stop=duration, num=duration * self.SAMPLE_RATE, endpoint=False
+            start=0, stop=duration, num=int(duration * self.SAMPLE_RATE), endpoint=False
         )
 
         # generate corresponding sine wave.
