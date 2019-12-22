@@ -1,10 +1,12 @@
 
 <center>
+
 # SpectroGraphic
 _Turn any image into a sound whose spectrogram looks like the image!_
 
 ![result](banner.png)
 </center>
+
 <hr>
 
 #### What is this?

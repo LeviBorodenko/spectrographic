@@ -11,9 +11,14 @@ Version 0.8.0
 - Created some examples.
 - Adding requirements
 
-Version 0.9.0
+Version 0.8.1
 ===========
 
 - Wrote README.md
 - test upload to testpypi
 - create demonstrational video
+
+Version 0.8.2
+===========
+
+- quick fix of centering in README.md
