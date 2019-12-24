@@ -251,7 +251,7 @@ class ColumnToSound(object):
 
         # get timesteps
         t = np.linspace(
-            start=0, stop=duration, num=duration * self.SAMPLE_RATE, endpoint=False
+            start=0, stop=duration, num=int(duration * self.SAMPLE_RATE), endpoint=False
         )
 
         # generate corresponding sine wave.
