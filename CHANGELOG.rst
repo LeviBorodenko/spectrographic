@@ -38,7 +38,7 @@ Version 0.9.0
 - Release
 - upload to the official pypi and making github repo public.
 
-Version 0.9.1
+Version 0.9.3
 ===========
 
 - Put dependencies into setup.cfg so pip can pull them while
