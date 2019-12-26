@@ -20,7 +20,7 @@ Furthermore, make sure you meet all the dependencies inside the `requirements.tx
 
 After installation with `pip` one simply needs to run `spectrographic [...]` in the console and with the stand-alone script you have to use `python spectrographic.py [...]` inside the folder containing `spectrographic.py`.
 
-You could also simply import the `SpectroGraphic` class from `spectrographic`. Check the doc-strings for detailed explanations and more features.
+You could also simply import the `SpectroGraphic` class from `spectrographic.base`. Check the doc-strings for detailed explanations and more features.
 
 #### Command-line tool usage
 ```
