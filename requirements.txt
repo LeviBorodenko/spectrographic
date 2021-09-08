@@ -1,5 +1,5 @@
 certifi==2019.11.28
 numpy==1.18.0
-Pillow==8.1.1
+Pillow==8.3.2
 simpleaudio==1.0.4
 wavio==0.0.4
