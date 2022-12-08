@@ -1,4 +1,4 @@
-certifi==2019.11.28
+certifi==2022.12.7
 numpy==1.18.0
 Pillow==8.1.1
 simpleaudio==1.0.4
